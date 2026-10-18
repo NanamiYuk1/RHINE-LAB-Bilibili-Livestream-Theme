@@ -4,7 +4,7 @@
 
 **1.0.0 · Windows x64 · OBS 浏览器源 · MIT / CC BY 4.0**
 
-[上游项目](https://github.com/Huajijiangqwq/CONTROL-Resonant-Bilibili-Livestream-Theme) · [启动说明](启动说明.txt) · [更新记录](CHANGELOG.md)
+[上游项目](https://github.com/Huajijiangqwq/CONTROL-Resonant-Bilibili-Livestream-Theme) · [原项目演示视频](https://www.bilibili.com/video/BV1DvaP62Ekf/) · [启动说明](启动说明.txt) · [更新记录](CHANGELOG.md)
 
 ![直播预览](screenshot.png)
 
@@ -13,6 +13,7 @@
 ## 与上游项目的关系
 
 - 上游项目：**CONTROL-Resonant-Bilibili-Livestream-Theme**，作者 Huaji264 / Huajijiangqwq，MIT 与 CC BY 4.0。
+- 原项目演示视频：[BV1DvaP62Ekf](https://www.bilibili.com/video/BV1DvaP62Ekf/)。
 - 本项目保留上游的四个工作区、B 站弹幕接入、主题编辑器、弹幕编辑器、音乐皮肤、OBS 浏览器源工作流与本地服务架构。
 - 本版把 Control: Resonance 的视觉体系整体替换为莱茵生命「内部资料档案」：暖白纸面、黑白双环徽记、暖杏金强调色（`#C5A16B`）、实验编号与观测记录排版。
 - 本项目为非官方粉丝作品，与鹰角网络、Remedy Entertainment、Bilibili、OBS Project 均无关联。
