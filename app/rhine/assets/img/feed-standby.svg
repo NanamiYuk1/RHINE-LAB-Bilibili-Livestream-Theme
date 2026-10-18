@@ -1,0 +1,267 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6f2ea"/>
+      <stop offset=".6" stop-color="#efe9df"/>
+      <stop offset="1" stop-color="#e7e0d3"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop offset="0" stop-color="#fffaf0" stop-opacity=".9"/>
+      <stop offset=".6" stop-color="#efe9df" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="9" stdDeviation="11" flood-color="#6a5b45" flood-opacity=".17"/>
+    </filter>
+    <filter id="shadowSel" x="-40%" y="-40%" width="180%" height="200%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#6a5b45" flood-opacity=".26"/>
+    </filter>
+    <style>
+      .lbl { font-family: "JetBrains Mono", Consolas, monospace; font-size: 12px; fill: #8b857a; letter-spacing: 2px; }
+      .sub { font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; fill: #b3aca0; letter-spacing: 2px; }
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <line x1="0" y1="0" x2="0" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="60" y1="0" x2="60" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="120" y1="0" x2="120" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="180" y1="0" x2="180" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="240" y1="0" x2="240" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="300" y1="0" x2="300" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="360" y1="0" x2="360" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="420" y1="0" x2="420" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="480" y1="0" x2="480" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="540" y1="0" x2="540" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="600" y1="0" x2="600" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="660" y1="0" x2="660" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="720" y1="0" x2="720" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="780" y1="0" x2="780" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="840" y1="0" x2="840" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="900" y1="0" x2="900" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="960" y1="0" x2="960" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1020" y1="0" x2="1020" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1080" y1="0" x2="1080" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1140" y1="0" x2="1140" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1200" y1="0" x2="1200" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1260" y1="0" x2="1260" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1320" y1="0" x2="1320" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1380" y1="0" x2="1380" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1440" y1="0" x2="1440" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1500" y1="0" x2="1500" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="1560" y1="0" x2="1560" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="0" x2="1600" y2="0" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="60" x2="1600" y2="60" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="120" x2="1600" y2="120" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="180" x2="1600" y2="180" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="240" x2="1600" y2="240" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="300" x2="1600" y2="300" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="360" x2="1600" y2="360" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="420" x2="1600" y2="420" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="480" x2="1600" y2="480" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="540" x2="1600" y2="540" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="600" x2="1600" y2="600" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="660" x2="1600" y2="660" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="720" x2="1600" y2="720" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="780" x2="1600" y2="780" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="840" x2="1600" y2="840" stroke="#8b8374" stroke-opacity=".05"/>
+  <line x1="0" y1="900" x2="1600" y2="900" stroke="#8b8374" stroke-opacity=".05"/>
+  <g opacity=".5" fill="none" stroke="#8b8374">
+    <circle cx="1380" cy="760" r="260" stroke-opacity=".12"/>
+    <circle cx="1380" cy="760" r="200" stroke-opacity=".1" stroke-dasharray="30 40"/>
+    <circle cx="1380" cy="760" r="5" fill="#8b8374" stroke="none" opacity=".3"/>
+  </g>
+  <text x="180" y="92" text-anchor="middle" font-family="'Inter','Microsoft YaHei',sans-serif" font-size="13" fill="#6f6a60" letter-spacing="3">工程研究</text>
+  <text x="180" y="110" text-anchor="middle" class="sub" font-size="9">ENGINEERING</text>
+  <text x="476" y="92" text-anchor="middle" font-family="'Inter','Microsoft YaHei',sans-serif" font-size="13" fill="#6f6a60" letter-spacing="3">生命科学</text>
+  <text x="476" y="110" text-anchor="middle" class="sub" font-size="9">LIFE SCIENCE</text>
+  <text x="772" y="92" text-anchor="middle" font-family="'Inter','Microsoft YaHei',sans-serif" font-size="13" fill="#6f6a60" letter-spacing="3">机构档案</text>
+  <text x="772" y="110" text-anchor="middle" class="sub" font-size="9">INSTITUTION</text>
+  <text x="1068" y="92" text-anchor="middle" font-family="'Inter','Microsoft YaHei',sans-serif" font-size="13" fill="#6f6a60" letter-spacing="3">能量研究</text>
+  <text x="1068" y="110" text-anchor="middle" class="sub" font-size="9">ENERGY</text>
+  <text x="1364" y="92" text-anchor="middle" font-family="'Inter','Microsoft YaHei',sans-serif" font-size="13" fill="#6f6a60" letter-spacing="3">特别项目</text>
+  <text x="1364" y="110" text-anchor="middle" class="sub" font-size="9">SPECIAL</text>
+  <g transform="translate(70, 150)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-001</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(70, 320)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-002</text>
+    <text x="14" y="128" class="sub">SEC.2</text>
+  </g>
+  <g transform="translate(70, 490)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-003</text>
+    <text x="14" y="128" class="sub">SEC.3</text>
+  </g>
+  <g transform="translate(70, 660)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-004</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(366, 150)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-011</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(366, 320)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-012</text>
+    <text x="14" y="128" class="sub">SEC.2</text>
+  </g>
+  <g transform="translate(366, 490)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-013</text>
+    <text x="14" y="128" class="sub">SEC.3</text>
+  </g>
+  <g transform="translate(366, 660)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-014</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(662, 150)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-021</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(662, 312)" filter="url(#shadowSel)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#cfc5b1" opacity=".8"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fffdf8" stroke="#b08758" stroke-width="1.4"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#b08758" stroke-width="1.2"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#c5a16b" stroke-width="1.6" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="4" fill="#c5a16b"/>
+    <circle cx="110" cy="24" r="3" fill="#c5a16b"/>
+    <text x="14" y="24" class="lbl" fill="#9b7247">X-022</text>
+    <text x="14" y="128" class="sub" fill="#9b7247">ACCESS</text>
+  </g>
+  <g transform="translate(662, 490)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-023</text>
+    <text x="14" y="128" class="sub">SEC.3</text>
+  </g>
+  <g transform="translate(662, 660)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-024</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(958, 150)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-031</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(958, 320)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-032</text>
+    <text x="14" y="128" class="sub">SEC.2</text>
+  </g>
+  <g transform="translate(958, 490)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-033</text>
+    <text x="14" y="128" class="sub">SEC.3</text>
+  </g>
+  <g transform="translate(958, 660)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-034</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(1254, 150)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-041</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <g transform="translate(1254, 320)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-042</text>
+    <text x="14" y="128" class="sub">SEC.2</text>
+  </g>
+  <g transform="translate(1254, 490)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-043</text>
+    <text x="14" y="128" class="sub">SEC.3</text>
+  </g>
+  <g transform="translate(1254, 660)" filter="url(#shadow)">
+    <rect x="0" y="5" width="220" height="140" rx="10" fill="#d5cdbd" opacity=".7"/>
+    <rect x="0" y="0" width="220" height="140" rx="10" fill="#fbf9f4" stroke="#c9c2b2" stroke-width="1.1"/>
+    <circle cx="110" cy="70" r="46" fill="none" stroke="#d8d0c0" stroke-width="1"/>
+    <circle cx="110" cy="70" r="32" fill="none" stroke="#cfc6b4" stroke-width="1.4" stroke-dasharray="26 16"/>
+    <circle cx="110" cy="70" r="3" fill="#b9b0a0"/>
+    <text x="14" y="24" class="lbl">X-044</text>
+    <text x="14" y="128" class="sub">SEC.1</text>
+  </g>
+  <line x1="70" y1="852" x2="1530" y2="852" stroke="#8b8374" stroke-opacity=".2"/>
+  <text x="70" y="876" class="sub" font-size="10" letter-spacing="4">RHINE LAB // INTERNAL DATABASE</text>
+  <text x="1530" y="876" class="sub" text-anchor="end">COLUMBIA · 0731</text>
+</svg>

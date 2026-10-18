@@ -1,0 +1,187 @@
+/* ==========================================================================
+   RHINE LAB SKIN — 莱茵生命主题皮肤
+   覆盖 studio-tokens.css 的深色工作区配色，并补充暖灰白细线风格。
+   加载顺序：studio-tokens.css → 各页面样式 → rhine-skin.css
+   ========================================================================== */
+:root {
+  --ui-font: 'Inter', 'MiSans', 'PingFang SC', 'Microsoft YaHei UI', 'Microsoft YaHei', 'Segoe UI', sans-serif;
+  --ui-bg: #eae5e1;
+  --ui-panel: #f7f4ef;
+  --ui-panel-soft: #f1ece4;
+  --ui-field: #ffffff;
+  --ui-control: #f4efe7;
+  --ui-hover: #ece5da;
+  --ui-selected: #e6dcc9;
+  --ui-line: #cfc8bc;
+  --ui-text: #2a2c26;
+  --ui-muted: #77756d;
+  --ui-dim: #a5a097;
+  --ui-accent: #b08758;
+  --ui-focus: #c5a16b;
+  --ui-primary: #080a08;
+  --ui-primary-text: #f2efe9;
+  --ui-success: #5f8f6a;
+  --ui-danger: #b84438;
+  --ui-warning: #9b7247;
+  --ui-radius: 2px;
+}
+
+/* 工作区整体 */
+body {
+  background: var(--ui-bg);
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.04); }
+::-webkit-scrollbar-thumb { background: rgba(74, 66, 55, 0.3); border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: rgba(74, 66, 55, 0.48); background-clip: content-box; }
+::selection { background: #c5a16b; color: #fff; }
+
+a { color: #9b7247; }
+
+/* 聚焦环 */
+:focus-visible { outline: 1px solid #c5a16b; outline-offset: 2px; }
+
+/* 通用面板 / 按钮微调（token 之外的部分） */
+button {
+  border-color: var(--ui-line);
+  background: var(--ui-control);
+  color: var(--ui-text);
+}
+button:hover { background: var(--ui-hover); color: var(--ui-text); }
+input, select, textarea {
+  background: var(--ui-field);
+  color: var(--ui-text);
+  border-color: var(--ui-line);
+}
+input:focus, select:focus, textarea:focus { border-color: #c5a16b; }
+output, meter { accent-color: #c5a16b; }
+
+/* --------------------------------------------------------------------------
+   主题编辑器：浅色工作区里仍残留深色主题时代的浅色文字，统一压成黑色
+   -------------------------------------------------------------------------- */
+.studio-menu-panel { color: var(--ui-text); }
+.editor-studio .studio-menu-panel button,
+.studio-menu-panel button { color: var(--ui-text) !important; background: transparent; }
+.editor-studio .studio-menu-panel button:hover,
+.editor-studio .studio-menu-panel button:focus-visible,
+.studio-menu-panel button:hover,
+.studio-menu-panel button:focus-visible { background: var(--ui-hover) !important; color: #080a08 !important; }
+
+dialog p,
+dialog b,
+dialog strong,
+dialog small,
+dialog li,
+dialog label,
+dialog .upload-zone { color: var(--ui-text); }
+dialog p.muted { color: var(--ui-muted); }
+dialog h2, dialog h3 { color: #080a08; }
+
+#publishDialog .publication-draft-preview { color: var(--ui-text); }
+#publishDialog #copyUrl {
+  background: var(--ui-primary);
+  border-color: var(--ui-primary);
+  color: var(--ui-primary-text);
+}
+#publishDialog #copyUrl:hover { background: #fff; color: #080a08; }
+
+/* 深色主题时代写死的浅色文字，按莱茵浅色工作区覆盖 */
+.editor-v2 #publicationState,
+.editor-v2 .publication-draft-preview,
+.editor-v2 #publishDialog p,
+.editor-v2 #publishDialog b,
+.editor-v2 #publishDialog small,
+.editor-v2 #publishDialog strong,
+.editor-v2 #publishDialog li,
+.editor-v2 #publishDialog label { color: var(--ui-text) !important; }
+.editor-v2 .publication-output-actions #copyUrl {
+  background: var(--ui-primary) !important;
+  color: var(--ui-primary-text) !important;
+  border-color: var(--ui-primary) !important;
+}
+.editor-v2 .publication-output-actions #copyUrl:hover {
+  background: #fff !important;
+  color: #080a08 !important;
+}
+
+/* 项目库、设置等弹窗里的次要说明 */
+.project-library p,
+.project-library .hint,
+.theme-settings p,
+.theme-settings .hint { color: var(--ui-muted); }
+
+/* 项目库：从深色工作区改成莱茵暖白档案面板 */
+.project-library {
+  background: #f7f4ef !important;
+  color: #2a2c26 !important;
+  border-color: #cfc8bc !important;
+}
+.project-library .project-draft {
+  background: #f1ece4 !important;
+  border-color: #cfc8bc !important;
+}
+.project-library .project-draft b { color: #080a08 !important; }
+.project-library .project-draft p { color: #77756d !important; }
+.project-library .project-draft-dot { background: #c5a16b !important; }
+.project-library button,
+.project-name-dialog button {
+  background: #f4efe7 !important;
+  color: #2a2c26 !important;
+  border-color: #cfc8bc !important;
+}
+.project-library button:hover,
+.project-name-dialog button:hover { background: #ece5da !important; border-color: #a99f8e !important; }
+.project-library .primary,
+.project-name-dialog .primary {
+  background: #080a08 !important;
+  color: #f2efe9 !important;
+  border-color: #080a08 !important;
+}
+.project-library .project-tabs button { background: transparent !important; color: #77756d !important; }
+.project-library .project-tabs button.active {
+  background: #e6dcc9 !important;
+  color: #080a08 !important;
+  border-color: #c5a16b !important;
+}
+.project-library input,
+.project-name-dialog input {
+  background: #ffffff !important;
+  color: #2a2c26 !important;
+  border-color: #cfc8bc !important;
+}
+.project-library .project-row:hover { background: #ece5da !important; }
+.project-library .project-row.selected { background: #e6dcc9 !important; border-color: #c5a16b !important; }
+.project-library .project-row small,
+.project-library .project-row time,
+.project-library .project-row .muted { color: #8a8378 !important; }
+.project-library .project-actions .project-preview-button {
+  background: #f4efe7 !important;
+  color: #2a2c26 !important;
+  border-color: #cfc8bc !important;
+}
+.project-library .project-actions .project-danger { color: #b84438 !important; background: transparent !important; }
+.project-library .project-detail { background: #fbf9f5 !important; }
+.project-library .project-preview-note,
+.project-library .project-library-status,
+.project-library .project-eyebrow { color: #77756d !important; }
+
+
+
+
+/* 主题编辑器底部动画预览的开关文字改成黑色 */
+#testDockToggle,
+.test-dock .test-heading button,
+.test-dock .test-heading .test-scope { color: #111 !important; }
+
+
+/* 软件界面里的浅色提示/状态文字改成黑色；画布与图层编辑区不改。 */
+[data-studio="theme"] .property-note,
+[data-studio="theme"] .canvas-status,
+[data-studio="theme"] #canvasHint,
+[data-studio="theme"] #zoomLabel,
+[data-studio="theme"] #editorStatus,
+[data-studio="theme"] .hint,
+[data-studio="theme"] .test-dock .test-heading,
+[data-studio="theme"] .test-dock .test-footer,
+[data-studio="theme"] .test-dock .test-scope,
+[data-studio="theme"] .test-dock .test-empty { color: #111 !important; }

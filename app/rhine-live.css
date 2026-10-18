@@ -1,0 +1,97 @@
+/* ==========================================================================
+   RHINE LAB LIVE SCENE — 直播画面的唯一底图
+   原生 Control Resonant 画面在这里全部隐藏，由 rhine/scene.html 接管；
+   主题图层只保留叠加装饰（文字 / 图片 / 线条 / 色块 / 边框 / 编组）。
+   ========================================================================== */
+
+.rhine-scene {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  border: 0;
+  display: block;
+  background: transparent;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 原生 HUD 与主题里充当底图的组件：一律隐藏 */
+.rhine-live .scene > .scene-background,
+.rhine-live .scene > .frame-material,
+.rhine-live .scene > .broadcast-header,
+.rhine-live .scene > .game-window,
+.rhine-live .scene > .chat-panel,
+.rhine-live .scene > .print-rules,
+.rhine-live .scene > .broadcast-timer,
+.rhine-live .scene > .now-playing-slot,
+.rhine-live .scene > .game-logos,
+.rhine-live .scene > .theme-background,
+.rhine-live .scene > .theme-hiss,
+.rhine-live .scene > .surface-grain,
+.rhine-live .scene > .custom-extras,
+.rhine-live .scene > .custom-handles,
+.rhine-live .scene > .fleet-interlude,
+.rhine-live .scene > .broadcast-statement {
+  display: none !important;
+}
+
+.rhine-live .theme-layer:is(
+    [data-theme-type='background'],
+    [data-theme-type='game'],
+    [data-theme-type='chat'],
+    [data-theme-type='host'],
+    [data-theme-type='topic'],
+    [data-theme-type='status'],
+    [data-theme-type='timer'],
+    [data-theme-type='logos'],
+    [data-theme-type='music'],
+    [data-theme-type='grain'],
+    [data-theme-type='hiss'],
+    [data-theme-type='resonance'],
+    [data-theme-type='normal'],
+    [data-theme-type='sc'],
+    [data-theme-type='gift'],
+    [data-theme-type='fleet']
+  ) {
+  display: none !important;
+}
+
+/* 画布本身不再铺底色，避免盖住莱茵底图 */
+.rhine-live .scene {
+  background: transparent;
+}
+.rhine-live .scene[data-editor-theme] .chat-feed iframe {
+  display: none !important;
+}
+
+/* 主题编辑器画布：莱茵画面就是底图 */
+html.editor-render .rhine-scene {
+  pointer-events: none;
+}
+
+/* OBS 纯输出：页面底色透明，只有莱茵场景 */
+html.obs,
+html.obs body {
+  background: transparent !important;
+}
+html.obs .monitor {
+  background: transparent !important;
+}
+
+/* 旧主题（控制：共振 / COD）只作为项目库存档，不再叠加到莱茵画面 */
+.rhine-live .scene.rhine-legacy-theme .theme-layer {
+  display: none !important;
+}
+
+/* 莱茵画面已经接管输出，隐藏旧的“画面来源 / 直播布局”设置 */
+.rhine-live .publication-live-choice,
+.rhine-live #legacyLayoutSection {
+  display: none !important;
+}
+
+
+/* 主题渲染器里的原生图层/文字（包括部件代理层画出的文字）全部隐藏，
+   画面只保留 rhine/scene.html；否则在编辑器里给部件输入文字会叠出第二份。 */
+.rhine-live .scene > :not(.rhine-scene) { display: none !important; }

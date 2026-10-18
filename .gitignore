@@ -1,0 +1,10 @@
+﻿dist/
+_shots/
+_backup/
+node_modules/
+theme-live/
+data/
+.runtime/
+*.log
+*.mp4
+*.mov

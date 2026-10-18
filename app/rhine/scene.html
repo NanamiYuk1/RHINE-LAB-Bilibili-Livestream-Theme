@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN" data-accent="amber">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>RHINE LAB / 观测记录 · 直播画面</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/scene.css?v=rhine19">
+  <style>
+    /* OBS：游戏开孔保持完全透明，NO SIGNAL 占位只在预览里出现 */
+    body.is-obs .feed .feed-media,
+    body.is-obs .feed .feed-standby {
+      display: none !important;
+    }
+    body.is-obs .feed {
+      background: transparent !important;
+    }
+  </style>
+</head>
+<body class="scene-page">
+  <!-- 图标库 -->
+  <svg class="sprite" aria-hidden="true" width="0" height="0">
+    <defs>
+      <symbol id="i-mark" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="32" cy="32" r="19" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="76 44" stroke-dashoffset="-18"/>
+        <circle cx="32" cy="32" r="3.2" fill="currentColor"/>
+        <circle cx="32" cy="13" r="3" fill="currentColor"/>
+        <path d="M32 2v10M32 52v10" stroke="currentColor" stroke-width="1.2" opacity=".5"/>
+      </symbol>
+      <symbol id="i-gift" viewBox="0 0 24 24">
+        <path d="M4 10h16v10H4zM3 6h18v4H3zM12 6v14M12 6c-1.8 0-4.6-.6-4.6-2.4C7.4 2.2 9 2 10 2.6c1.2.7 2 2.4 2 3.4Zm0 0c1.8 0 4.6-.6 4.6-2.4C16.6 2.2 15 2 14 2.6c-1.2.7-2 2.4-2 3.4Z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+      <symbol id="i-sc" viewBox="0 0 24 24">
+        <path d="M3 5h18v11H9l-4 3v-3H3z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M7 9h10M7 12h6" stroke="currentColor" stroke-width="1.2"/>
+      </symbol>
+      <symbol id="i-fleet" viewBox="0 0 24 24">
+        <path d="M12 2.5 21 7v10l-9 4.5L3 17V7Z" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M12 7v9M8.5 11.5h7" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+      <symbol id="i-signal" viewBox="0 0 24 24">
+        <path d="M4 19v-3M9 19v-6M14 19v-9M19 19v-12" stroke="currentColor" stroke-width="2"/>
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.3"/>
+        <path d="M12 7v5.5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.3"/>
+      </symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24">
+        <path d="m8 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+      <symbol id="i-audio" viewBox="0 0 24 24">
+        <path d="M4 14v-4M8 17V7M12 20V4M16 17V7M20 14v-4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="stage-wrap" id="stageWrap">
+    <div class="scene" id="scene" data-layout="terminal" data-enter="0">
+
+      <!-- 背景：带画面开孔的暖白档案底 -->
+      <svg class="scene-bg" id="sceneBg" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="bgFill" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f3efe8"/>
+            <stop offset=".52" stop-color="#ece7df"/>
+            <stop offset="1" stop-color="#e6e0d6"/>
+          </linearGradient>
+          <radialGradient id="bgGlow" cx=".16" cy=".1" r=".9">
+            <stop offset="0" stop-color="#fff8ea" stop-opacity=".95"/>
+            <stop offset=".55" stop-color="#f0eadf" stop-opacity=".4"/>
+            <stop offset="1" stop-color="#e6e0d6" stop-opacity="0"/>
+          </radialGradient>
+          <pattern id="bgGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+            <path d="M48 0H0v48" fill="none" stroke="#4a4237" stroke-opacity=".05" stroke-width="1"/>
+          </pattern>
+          <pattern id="bgGridMajor" width="240" height="240" patternUnits="userSpaceOnUse">
+            <path d="M240 0H0v240" fill="none" stroke="#4a4237" stroke-opacity=".075" stroke-width="1"/>
+          </pattern>
+          <filter id="bgNoise">
+            <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/>
+            <feColorMatrix type="saturate" values="0"/>
+            <feComponentTransfer><feFuncA type="linear" slope=".032"/></feComponentTransfer>
+          </filter>
+        </defs>
+        <g id="bgLayers">
+          <clipPath id="bgClip" clipPathUnits="userSpaceOnUse">
+            <path id="bgClipPath" clip-rule="evenodd" d="M0 0H1920V1080H0Z"/>
+          </clipPath>
+          <path id="bgHolePath" fill="url(#bgFill)" fill-rule="evenodd" clip-rule="evenodd" d="M0 0H1920V1080H0Z"/>
+          <g clip-path="url(#bgClip)">
+            <rect width="1920" height="1080" fill="url(#bgGlow)"/>
+            <rect width="1920" height="1080" fill="url(#bgGrid)"/>
+            <rect width="1920" height="1080" fill="url(#bgGridMajor)"/>
+            <rect width="1920" height="1080" filter="url(#bgNoise)"/>
+          </g>
+        </g>
+      </svg>
+
+      <div class="fx-grain" aria-hidden="true"></div>
+      <div class="fx-scan" id="fxScan" aria-hidden="true"></div>
+      <div class="scan-sweep" id="scanSweep" aria-hidden="true"></div>
+
+      <div class="reg-marks" aria-hidden="true">
+        <span class="rm tl"></span><span class="rm tr"></span>
+        <span class="rm bl"></span><span class="rm br"></span>
+        <span class="rm-code l">RHINE LAB // COLUMBIA · 04:17</span>
+        <span class="rm-code r">INTERNAL DATABASE · SECURED</span>
+      </div>
+
+      <!-- 顶栏 -->
+      <header class="topbar" id="topbar">
+        <div class="header-deco" aria-hidden="true"><i></i><span>ARCHIVE BROADCAST</span><i></i></div>
+      </header><div class="top-part" id="topBrand">
+          <div class="brand">
+            <span class="brand-mark"><svg viewBox="0 0 64 64"><use href="#i-mark"/></svg></span>
+            <span class="brand-word">
+              <b>RHINE LAB</b>
+              <i>莱茵生命 <em>//</em> INTERNAL DATABASE</i>
+            </span>
+          </div>
+        </div>
+        <div class="top-part" id="topHost">
+          <div class="host-block">
+            <span class="micro">RESEARCHER / 研究员</span>
+            <span class="host-line">
+              <b id="hostText">研究员 07</b>
+              <i class="host-dot"></i>
+              <span id="hostState">观测中</span>
+            </span>
+          </div>
+        </div>
+        <div class="top-part" id="topPlate">
+          <div class="title-plate clip-br" id="titlePlate">
+            <span class="plate-code mono" id="plateCode">X-031</span>
+            <span class="plate-text" id="titleText">今晚的观测记录</span>
+          </div>
+        </div>
+        <div class="top-part" id="topLive">
+          <div class="top-status">
+            <div class="clock-row">
+              <span class="micro">LOCAL TIME</span>
+              <span class="mono" id="clockText">21:04:12</span>
+            </div>
+            <div class="live-row">
+              <span class="live-badge" id="liveBadge"><i></i>LIVE</span>
+              <span class="live-res mono" id="liveRes">1080P60</span>
+            </div>
+          </div>
+        </div>
+        <div class="top-part" id="topTimer">
+          <span class="live-sep"></span>
+          <time class="timer mono" id="timerText">00:00:00</time>
+        </div>
+        
+
+      <!-- 游戏画面 -->
+      <section class="feed" id="feed" aria-label="游戏画面">
+        <img class="feed-media" id="feedImage" src="assets/img/feed-standby.svg" alt="">
+        <div class="feed-standby" id="feedStandby">
+          <span class="micro">SPECIMEN FEED / 样本影像</span>
+          <b>NO SIGNAL</b>
+          <span>在 OBS 中将游戏采集放置在此区域</span>
+        </div>
+        <div class="feed-frame" aria-hidden="true">
+          <i class="corner tl"></i><i class="corner tr"></i>
+          <i class="corner bl"></i><i class="corner br"></i>
+          <span class="feed-tag tl-tag">SPECIMEN FEED <b>01</b></span>
+          <span class="feed-tag tr-tag"><i class="rec-dot"></i>REC <span class="mono" id="recTime">00:00:00</span></span>
+          <span class="feed-tag bl-tag">SRC <b>GAME CAPTURE</b></span>
+          <span class="feed-tag br-tag">1920×1080 <b>60</b></span>
+          <span class="frame-ruler right"></span>
+          <span class="frame-ruler left"></span>
+          <span class="frame-glow"></span>
+        </div>
+        <div class="feed-scan" aria-hidden="true"></div>
+        <div class="alert-layer" id="alertLayer" aria-live="polite"></div>
+      </section>
+
+      <!-- 观测记录 -->
+      <aside class="comms term-panel" id="comms" aria-label="观测记录">
+        <i class="screw tr" aria-hidden="true"></i>
+        <i class="screw bl" aria-hidden="true"></i>
+      </aside>
+
+      <div class="comms-part" id="commsHead">
+        <header class="comms-head">
+          <div class="comms-id">
+            <span class="hex-icon"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="24 14"/><circle cx="16" cy="16" r="1.8" fill="currentColor"/></svg></span>
+            <div class="comms-titles">
+              <h2>观测记录</h2>
+              <span class="micro">OBSERVATION LOG</span>
+            </div>
+          </div>
+          <div class="comms-side">
+            <span class="ch mono">LOG.03</span>
+            <span class="ch-state"><i></i>SECURED</span>
+          </div>
+          <div class="comms-rule"><i></i><b></b></div>
+        </header>
+      </div>
+      <div class="comms-part" id="commsFeedBox">
+        <div class="comms-feed" id="commsFeed" aria-live="polite"></div>
+        <div class="comms-fade" aria-hidden="true"></div>
+      </div>
+      <div class="comms-part" id="commsFoot">
+        <footer class="comms-foot">
+          <span class="uplink"><i></i>OBSERVATION ACTIVE</span>
+          <span class="mono" id="commsRate">0 MSG/MIN</span>
+        </footer>
+      </div>
+
+      <!-- 遥测 -->
+      <section class="telemetry term-panel" id="telemetry" aria-label="观测遥测">
+        <i class="screw tr" aria-hidden="true"></i>
+        <i class="screw bl" aria-hidden="true"></i>
+      </section>
+
+      <div class="tele-part" id="teleOp">
+        <div class="tele-cell op">
+          <span class="micro">FANS / 粉丝数</span>
+          <b id="opText">7-18 · 观测</b>
+        </div>
+      </div>
+      <div class="tele-part" id="teleEnv">
+        <div class="tele-cell">
+          <span class="micro">PLAYS / 播放数</span>
+          <b><span class="mono" id="oriValue">0</span></b>
+          <span class="mini-bar"><i id="oriBar" style="width:34%"></i></span>
+        </div>
+      </div>
+      <div class="tele-part" id="teleUplink">
+        <div class="tele-cell">
+          <span class="micro">LIKES / 获赞数</span>
+          <b><span class="mono" id="pingValue">12</span><i>MS</i></b>
+          <span class="signal small" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </div>
+      </div>
+      <div class="tele-part" id="teleVisitors">
+        <div class="tele-cell">
+          <span class="micro">POPULARITY / 人气值</span>
+          <b class="mono" id="viewerValue">12,480</b>
+          <span class="delta" id="viewerDelta">+2.4%</span>
+        </div>
+      </div>
+      <div class="tele-part" id="teleWave">
+        <div class="tele-wave" aria-hidden="true">
+          <svg viewBox="0 0 320 44" preserveAspectRatio="none">
+            <path class="wave-base" d="M0 22h320"/>
+            <path class="wave-line" d="M0 30 24 26 48 32 72 18 96 24 120 12 144 26 168 20 192 30 216 14 240 22 264 10 288 24 312 18 320 20"/>
+          </svg>
+          <span class="micro">DATASTREAM</span>
+        </div>
+      </div>
+
+      <!-- 档案简报（研讨布局） -->
+      <section class="briefing term-panel" id="briefing" aria-label="档案简报">
+        <i class="screw tr" aria-hidden="true"></i>
+        <i class="screw bl" aria-hidden="true"></i>
+      </section>
+
+      <div class="brief-part" id="briefCopy">
+        <div class="brief-copy">
+          <span class="micro">ARCHIVE BRIEF / 档案简报</span>
+          <h1 id="briefTitle">今晚的观测记录</h1>
+          <p id="briefSub">莱茵生命 · 内部资料档案 · 观测记录</p>
+          <div class="brief-tags"><span class="mono">X-031</span><span class="mono">COLUMBIA / 0731</span><span class="live-tag"><i></i>ON AIR</span></div>
+        </div>
+      </div>
+      <div class="brief-part" id="briefStats">
+        <div class="brief-stats">
+          <div><span class="micro">ELAPSED</span><b class="mono" id="briefElapsed">00:00:00</b></div>
+          <div><span class="micro">FANS</span><b class="mono" id="briefViewers">0</b></div>
+          <div><span class="micro">POPULARITY</span><b class="mono" id="briefPing">0</b></div>
+        </div>
+      </div>
+      <div class="brief-part" id="briefDeco">
+        <div class="brief-deco" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- 底栏 -->
+      <div class="nowplaying" id="nowPlaying" aria-label="正在播放">
+        <i class="screw tr" aria-hidden="true"></i>
+        <div class="np-disc"><img class="np-cover" id="npCover" alt=""><b id="npInitial">M</b><i></i></div>
+        <div class="np-copy">
+          <span class="micro">NOW PLAYING <i class="np-live" id="npState">ON</i></span>
+          <div class="np-title" id="npTitle">生命流</div>
+          <div class="np-artist" id="npArtist">塞壬唱片 · MSR</div>
+        </div>
+        <div class="np-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="np-bar"><i id="npProgress"></i></div>
+      </div>
+
+      <div class="ticker" id="ticker">
+        <span class="ticker-label"><svg viewBox="0 0 24 24"><use href="#i-signal"/></svg>LAB NOTICE</span>
+        <div class="ticker-window">
+          <div class="ticker-track" id="tickerTrack"><span id="tickerText"></span></div>
+        </div>
+        <span class="ticker-end mono">DB.OK</span>
+      </div>
+
+      <div class="sysline" id="sysline">
+        <span class="barcode" aria-hidden="true"></span>
+        <span class="mono" id="versionText">RHINE LAB v1.0</span>
+        <span class="mono" id="roomText">ROOM 7355608</span>
+        <span class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </div>
+
+      <!-- 启动序列 -->
+      <div class="boot" id="boot">
+        <div class="boot-inner">
+          <span class="boot-mark"><svg viewBox="0 0 64 64"><use href="#i-mark"/></svg></span>
+          <div class="boot-word">RHINE LAB</div>
+          <div class="boot-sub">INTERNAL DATABASE // 内部资料档案</div>
+          <div class="boot-log" id="bootLog"></div>
+          <div class="boot-bar"><i id="bootBar"></i></div>
+          <div class="boot-foot"><span>COLUMBIA <em>//</em> 0731</span><span class="mono" id="bootPct">000</span></div>
+        </div>
+        <div class="boot-scan"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/state.js?v=rhine4"></script>
+  <script src="js/messages.js"></script>
+  <script src="js/scene.js?v=rhine6"></script>
+  <script src="js/parts.js?v=rhine10"></script>
+  <script src="js/app-link.js?v=rhine6"></script>
+</body>
+</html>
