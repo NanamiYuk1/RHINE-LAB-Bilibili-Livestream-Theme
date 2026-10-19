@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 const {app,BrowserWindow,Menu,Tray,nativeImage,ipcMain,shell,clipboard,utilityProcess,session,safeStorage,desktopCapturer,protocol,dialog}=require('electron');
 const path=require('node:path'),fs=require('node:fs');
 const {pageUrl,readConfig,saveConfig}=require('./core');
@@ -8,6 +8,9 @@ const root=path.resolve(__dirname,'..');
 // Optional isolated profile for development / release checks. Never uses a production profile.
 const profile=process.argv.find(x=>x.startsWith('--profile='));
 if(profile)app.setPath('userData',path.resolve(profile.slice(10)));
+// Brand is now Rhine Lab, but keep the existing data folder so upgrades never lose
+// projects, theme drafts, timers or the encrypted Bilibili session.
+try{ const legacy=path.join(app.getPath('appData'),'Control Resonant'); app.setPath('userData',legacy); }catch{}
 app.setAppUserModelId('RhineLab.LiveStudio');
 const hasLock=app.requestSingleInstanceLock();
 let win,tray,child,macAudio,exiting=false,failureShown=false,diagnostics;
@@ -42,7 +45,7 @@ function launchServices(){
   const userData=app.getPath('userData'),config=readConfig(userData);
   log('Starting local services');
   const proc=utilityProcess.fork(path.join(__dirname,'services.js'),[],{
-    cwd:root,stdio:'pipe',serviceName:'Control Resonant Local Services',
+    cwd:root,stdio:'pipe',serviceName:'Rhine Lab Local Services',
     env:{...process.env,CONTROL_DATA:path.join(userData,'data'),CONTROL_PORT:config.port?String(config.port):''},
   });
   child=proc;

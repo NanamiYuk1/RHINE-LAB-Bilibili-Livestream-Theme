@@ -1,4 +1,4 @@
-/* Native HUD controls: alter typography and layout without replacing animated nodes. */
+﻿/* Native HUD controls: alter typography and layout without replacing animated nodes. */
 (function (root) {
   'use strict';
   const n = (key, label, def, min, max, step = 1, mode) => ({
@@ -79,7 +79,7 @@
         key: 'logoEnglishText',
         label: '英文文字',
         type: 'text',
-        default: 'CONTROL RESONANT',
+        default: 'RHINE LAB',
         mode: 'text',
       },
       {
@@ -445,7 +445,7 @@
           ? logoWords(name === 'chinese' ? l.logoChineseText : l.logoEnglishText).join(' ')
           : name === 'chinese'
             ? '控制 共振'
-            : 'CONTROL RESONANT';
+            : 'RHINE LAB';
     el.setAttribute(
       'aria-label',
       [describe(l.logoEnglishVisible, 'english'), describe(l.logoChineseVisible, 'chinese')]

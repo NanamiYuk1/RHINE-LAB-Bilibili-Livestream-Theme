@@ -1,5 +1,14 @@
 # 更新记录
 
+## 1.0.1（Windows x64）
+
+品牌收尾与宣传片。
+
+- **标识统一为 Rhine Lab**：`package.json` 的 `name` / `productName`、直播间徽标标题、场景默认字标、编辑器提示文案里的 `CONTROL RESONANT`、`Control Resonant`、`控制：共振` 全部改为 `RHINE LAB` / 莱茵生命；本地服务进程名改为 `Rhine Lab Local Services`。
+- **升级不丢数据**：品牌改名后仍沿用原数据目录 `%APPDATA%\Control Resonant`（桌面外壳里显式固定），项目、主题草稿、直播计时、B 站加密登录均保持不变。
+- 新增宣传片工程说明（`promo/`，见 README），成片 `RHINE-LAB-PROMO-1080p60.mp4`。
+- 未改动画面布局、主题编辑器、弹幕、音乐皮肤的既有逻辑。
+
 ## 1.0.0（Windows x64）
 
 首个 RHINE LAB 发布版，基于上游 **CONTROL-Resonant-Bilibili-Livestream-Theme 1.0.2** 二次修改，仅提供 Windows x64 运行版。

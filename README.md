@@ -2,13 +2,21 @@
 
 > 基于 [CONTROL-Resonant-Bilibili-Livestream-Theme](https://github.com/Huajijiangqwq/CONTROL-Resonant-Bilibili-Livestream-Theme) 二次修改的《明日方舟》莱茵生命「内部资料档案」风格 OBS 直播主题与本地主题工作室。
 
-**1.0.0 · Windows x64 · OBS 浏览器源 · MIT / CC BY 4.0**
+**1.0.1 · Windows x64 · OBS 浏览器源 · MIT / CC BY 4.0**
 
-[上游项目](https://github.com/Huajijiangqwq/CONTROL-Resonant-Bilibili-Livestream-Theme) · [原项目演示视频](https://www.bilibili.com/video/BV1DvaP62Ekf/) · [启动说明](启动说明.txt) · [更新记录](CHANGELOG.md)
+[上游项目](https://github.com/Huajijiangqwq/CONTROL-Resonant-Bilibili-Livestream-Theme) · [原项目演示视频](https://www.bilibili.com/video/BV1DvaP62Ekf/) · [启动说明](启动说明.txt) · [更新记录](CHANGELOG.md) · [宣传片说明](promo/README.md)
 
 ![直播预览](screenshot.png)
 
 ---
+
+## 宣传片
+
+**RHINE LAB · 直播主题 1.0.1** 配套宣传片：`RHINE-LAB-PROMO-1080p60.mp4`（70.4 秒 / 1920×1080 / 60 fps / H.264 CRF 22 / AAC 48 kHz 立体声 / −14 LUFS）。
+
+- 剪辑锁在 **「Rhine Lab.LLC」112.5 BPM** 的小节线上，每 2.133 秒一个切点。
+- 画面中的直播画面、主题编辑器、三种基础画面全部来自**本软件真实运行的界面**（本地服务 + 真实消息接口），叠加 3D 舞台与标注。
+- 工程与复现方式见 [promo/README.md](promo/README.md)。
 
 ## 与上游项目的关系
 

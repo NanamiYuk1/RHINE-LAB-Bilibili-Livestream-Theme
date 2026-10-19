@@ -1,4 +1,4 @@
-(async () => {
+﻿(async () => {
   'use strict';
   const M = ThemeEditorModel,
     $ = (id) => document.getElementById(id),
@@ -2016,7 +2016,7 @@
         l.type === 'logos'
           ? l.logoContentMode === 'text'
             ? '自定义文字沿用官方字标的尺寸、间距与排列；改回「官方图形字标」即恢复原图。'
-            : '调整容器不缩放字标；需要替换「CONTROL RESONANT / 控制 共振」时把「字标内容」改为自定义文字。'
+            : '调整容器不缩放字标；需要替换「RHINE LAB / 莱茵生命」时把「字标内容」改为自定义文字。'
           : '调整容器不缩放文字。';
       grid.append(tip);
       if (l.type === 'logos') {
@@ -5469,7 +5469,7 @@
   };
   if (chatMode) {
     $('compositionMode').hidden = true;
-    document.title = '弹幕区编辑器 · CONTROL';
+    document.title = '弹幕区编辑器 · RHINE LAB';
     const nameNode = document.querySelector('.app-name')?.firstChild,
       sizeNode = document.querySelector('.doc-size');
     if (nameNode) nameNode.textContent = '弹幕区编辑器 ';
