@@ -1,8 +1,10 @@
 # RHINE LAB · 直播主题
 
+<img src="desktop/icon-1024.png" alt="RHINE LAB 应用图标" width="96" align="right">
+
 > 基于 [CONTROL-Resonant-Bilibili-Livestream-Theme](https://github.com/Huajijiangqwq/CONTROL-Resonant-Bilibili-Livestream-Theme) 二次修改的《明日方舟》莱茵生命「内部资料档案」风格 OBS 直播主题与本地主题工作室。
 
-**1.0.1 · Windows x64 · OBS 浏览器源 · MIT / CC BY 4.0**
+**1.0.3 · Windows x64 · OBS 浏览器源 · MIT / CC BY 4.0**
 
 [上游项目](https://github.com/Huajijiangqwq/CONTROL-Resonant-Bilibili-Livestream-Theme) · [原项目演示视频](https://www.bilibili.com/video/BV1DvaP62Ekf/) · [启动说明](启动说明.txt) · [更新记录](CHANGELOG.md) · [宣传片说明](promo/README.md)
 
@@ -12,7 +14,7 @@
 
 ## 宣传片
 
-**RHINE LAB · 直播主题 1.0.1** 配套宣传片：`RHINE-LAB-PROMO-1080p60.mp4`（70.4 秒 / 1920×1080 / 60 fps / H.264 CRF 22 / AAC 48 kHz 立体声 / −14 LUFS）。
+**RHINE LAB · 直播主题 1.0.3** 配套宣传片：`RHINE-LAB-PROMO-1080p60.mp4`（70.4 秒 / 1920×1080 / 60 fps / H.264 CRF 22 / AAC 48 kHz 立体声 / −14 LUFS）。
 
 - 剪辑锁在 **「Rhine Lab.LLC」112.5 BPM** 的小节线上，每 2.133 秒一个切点。
 - 画面中的直播画面、主题编辑器、三种基础画面全部来自**本软件真实运行的界面**（本地服务 + 真实消息接口），叠加 3D 舞台与标注。
@@ -91,7 +93,7 @@
 
 ## 下载与安装（Windows x64）
 
-1. 在本仓库 **Releases** 页面下载 `RHINE-LAB-Live-1.0.0-win-x64.zip`。
+1. 在本仓库 **Releases** 页面下载 `RHINE-LAB-Live-1.0.3-win-x64.zip`。
 2. 完整解压后双击 `RhineLab.exe`；不需要安装 Node.js，不要把 exe 单独移出文件夹。
 3. 关闭窗口后程序驻留系统托盘，本地服务继续为 OBS 提供页面；托盘右键可退出。
 4. 个人设置、登录信息、项目与已应用主题保存在 `%APPDATA%\Control Resonant`，升级时无需复制到程序目录。
@@ -153,7 +155,7 @@ screenshot.png
 启动说明.txt
 ```
 
-Releases 中的 `RHINE-LAB-Live-1.0.0-win-x64.zip` 解压后是运行目录：`RhineLab.exe` + `resources/app/`（上述源码与素材）。
+Releases 中的 `RHINE-LAB-Live-1.0.3-win-x64.zip` 解压后是运行目录：`RhineLab.exe` + `resources/app/`（上述源码与素材）。
 
 ## 源码与构建
 

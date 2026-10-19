@@ -1,12 +1,26 @@
 ﻿# 更新记录
 
+## 1.0.3（Windows x64）
+
+修复：主题编辑器里隐藏「部件 · …」图层后，右侧莱茵画布没有真正隐藏。
+
+- 现象：在主题编辑器左侧图层列表点击任一部件（顶部信息栏、游戏画面、观测记录等）的「隐藏」，列表会变暗，但右侧画布里的对应区块仍然显示；拖动、改文字也不会反映到画布和 OBS 输出。
+- 原因：24 个「部件 · …」是代理图层，画布实际是内嵌的 rhine/scene.html。rhine-live-bridge.js 之前只下发当前布局的标准坐标，从未把主题文档里的显隐 / 坐标 / 文字同步给场景；同时样式表会隐藏所有主题图层，所以列表变化不会影响画布。
+- 修改：rhine-live-bridge.js 新增 themeParts() / applyParts()，从当前主题文档的 part-* 图层生成 24 个部件（显隐、坐标、透明度、亮度、阴影、圆角、面板透明度、文字），在主题渲染、场景加载和布局切换时同步；没有主题或布局不匹配时回退标准坐标，旧主题保持兼容。图层颜色不同步，避免覆盖场景标题的深底浅字配色。
+- 验证：ARCHIVE / PANORAMA / SEMINAR 三套预设的 24 个部件逐一隐藏 / 显示往返；拖动、改文字、游戏开孔均同步；主题编辑器画布与「应用到直播」后的 OBS 输出一致。
+
+应用图标：
+
+- 窗口 / 托盘 / 页面图标统一为 RhineLab.exe 内嵌的「螺旋 + 双环 + 琥珀点」徽记，不再与旧版红色三角混用。
+- 附带 1024 PNG 与 16–256 多尺寸 ICO（`resources/app/desktop/`）。
+
 ## 1.0.2（Windows x64）
 
 修复：B 站实时消息没有进入莱茵画面。
 
 - 现象：直播间消息已在「消息」面板正常滚动（弹幕 / SC / 礼物 / 舰长），但 OBS 画面与主题编辑器画布里的「观测记录」始终为空。
 - 原因：直播消息只被送进旧画布通道（simulation.html 的 hiss-main），莱茵场景依赖的 /api/rhine/message 只有本地预览表单在写。
-- 修改：hine-live-bridge.js 新增 	oRhineMessage() 与 window.RhineLiveFeed，把 ilibili-live 的条目（normal / sc / gift / guard；字段 sender / body / amount / giftName / quantity / coins / rank）转成莱茵消息格式；live.js 在 eceive(item) 里镜像到莱茵场景，OBS 与主题编辑器画布同时生效。
+- 修改：rhine-live-bridge.js 新增 toRhineMessage() 与 window.RhineLiveFeed，把 bilibili-live 的条目（normal / sc / gift / guard；字段 sender / body / amount / giftName / quantity / coins / rank）转成莱茵消息格式；live.js 在 receive(item) 里镜像到莱茵场景，OBS 与主题编辑器画布同时生效。
 - 验证：POST /api/rhine/message 后 /api/rhine/health 的 messages 计数递增，场景经 /api/rhine/events 收到并渲染。
 
 

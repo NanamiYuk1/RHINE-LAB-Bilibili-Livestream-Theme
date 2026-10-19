@@ -166,13 +166,72 @@
     };
   }
 
-  function applyDefaultParts() {
+  // 主题文档里的「部件 · …」代理图层就是莱茵场景的 24 个区块（rhine/js/parts.js）。
+  // 主题编辑器画布和已发布输出都以当前主题为准：坐标、显隐、质感与文字都要
+  // 同步给场景，否则画布里隐藏的部件仍然留在底图上。工作室直播预览没有主题
+  // 时仍使用当前布局的标准坐标；旧主题缺少代理图层时也自动用标准坐标补齐。
+  const PART_KEYS = Object.keys(DEFAULT_PARTS.terminal);
+  function themeParts() {
+    const doc = window.ThemeRenderer?.value;
+    if (!doc || !Array.isArray(doc.layers)) return null;
+    const themeLayout = doc.settings?.rhineLayout;
+    if (['terminal', 'immersive', 'cockpit'].includes(themeLayout) && themeLayout !== layout()) return null;
+    const base = DEFAULT_PARTS[layout()];
+    if (!base) return null;
+    const layers = new Map(doc.layers.map((layer) => [layer.id, layer])),
+      parts = {};
+    let themed = 0;
+    for (const key of PART_KEYS) {
+      const layer = layers.get('part-' + key);
+      if (!layer) {
+        parts[key] = { ...base[key] };
+        continue;
+      }
+      themed++;
+      const group = layer.parent ? layers.get(layer.parent) : null,
+        opacity = Number.isFinite(layer.opacity) ? layer.opacity : 1,
+        groupOpacity = group && Number.isFinite(group.opacity) ? group.opacity : 1;
+      parts[key] = {
+        x: layer.x,
+        y: layer.y,
+        w: layer.w,
+        h: layer.h,
+        visible: layer.visible !== false && group?.visible !== false,
+        opacity: Math.max(0, Math.min(1, opacity * groupOpacity)),
+        brightness: layer.brightness,
+        shadow: layer.shadow,
+        radius: layer.radius,
+        panelOpacity: layer.panelOpacity,
+        // 只同步文字内容，不同步图层颜色：场景里的标题等文字有各自的底色与
+        // 配色（例如沉浸式标题栏是深底浅字），套用图层默认墨色会看不清。
+        text: typeof layer.text === 'string' ? layer.text : '',
+      };
+    }
+    return themed ? withNpStyle(parts) : null;
+  }
+
+  function applyParts() {
     const win = target();
     if (!win) return;
+    const themed = themeParts();
     try {
-      win.postMessage({ type: 'rhine:parts', parts: withNpStyle(DEFAULT_PARTS[layout()]) }, location.origin);
+      win.postMessage(
+        { type: 'rhine:parts', parts: themed || withNpStyle(DEFAULT_PARTS[layout()]) },
+        location.origin,
+      );
     } catch {}
   }
+
+  // 主题每次重绘（拖动、改文字、隐藏）都会通知场景；合并到同一帧发送。
+  let partsFrame = 0;
+  function scheduleParts() {
+    if (partsFrame) return;
+    partsFrame = requestAnimationFrame(() => {
+      partsFrame = 0;
+      applyParts();
+    });
+  }
+  window.addEventListener('theme-applied', scheduleParts);
 
   function layout() {
     const value = $('rhineLayout')?.value;
@@ -387,8 +446,7 @@
   $('rhineLayout')?.addEventListener('change', () => {
     const themeLayout = window.ThemeRenderer?.value?.settings?.rhineLayout;
     layoutOverride = layout() !== themeLayout;
-    if (layoutOverride) applyDefaultParts();
-    else applyDefaultParts();
+    applyParts();
     pushState(true);
   });
 
@@ -419,9 +477,10 @@
   if (writer) syncLayoutOptions();
 
   // 首屏也要把完整部件坐标发给场景（此前只有切换布局才发，子部件会停在 0,0）。
+  // 主题已在文档里时直接使用主题坐标，避免先闪一下标准布局。
   const sceneFrame = $('rhineScene');
-  if (sceneFrame) sceneFrame.addEventListener('load', () => setTimeout(applyDefaultParts, 80));
-  setTimeout(applyDefaultParts, 700);
+  if (sceneFrame) sceneFrame.addEventListener('load', () => setTimeout(applyParts, 80));
+  setTimeout(applyParts, 700);
 
   pushState(true);
   setInterval(() => pushState(true), 15000);
