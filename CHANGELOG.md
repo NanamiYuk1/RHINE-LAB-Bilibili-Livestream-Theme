@@ -1,4 +1,14 @@
-# 更新记录
+﻿# 更新记录
+
+## 1.0.2（Windows x64）
+
+修复：B 站实时消息没有进入莱茵画面。
+
+- 现象：直播间消息已在「消息」面板正常滚动（弹幕 / SC / 礼物 / 舰长），但 OBS 画面与主题编辑器画布里的「观测记录」始终为空。
+- 原因：直播消息只被送进旧画布通道（simulation.html 的 hiss-main），莱茵场景依赖的 /api/rhine/message 只有本地预览表单在写。
+- 修改：hine-live-bridge.js 新增 	oRhineMessage() 与 window.RhineLiveFeed，把 ilibili-live 的条目（normal / sc / gift / guard；字段 sender / body / amount / giftName / quantity / coins / rank）转成莱茵消息格式；live.js 在 eceive(item) 里镜像到莱茵场景，OBS 与主题编辑器画布同时生效。
+- 验证：POST /api/rhine/message 后 /api/rhine/health 的 messages 计数递增，场景经 /api/rhine/events 收到并渲染。
+
 
 ## 1.0.1（Windows x64）
 
