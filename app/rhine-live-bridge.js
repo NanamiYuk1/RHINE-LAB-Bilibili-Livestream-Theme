@@ -308,7 +308,11 @@
   }
   if (writer) {
     pollBiliStats();
-    setInterval(pollBiliStats, 30 * 60 * 1000);
+    // 每 30 秒同步一次账号数据：登录 / 刚开播时不必等 30 分钟
+    setInterval(pollBiliStats, 30 * 1000);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) pollBiliStats();
+    });
   }
 
   function pushState(immediate) {
