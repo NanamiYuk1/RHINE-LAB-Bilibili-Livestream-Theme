@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   'use strict';
   const $ = (id) => document.getElementById(id),
     key = 'hiss-main-live-v1',
@@ -301,6 +301,7 @@
       // The Bilibili journal still records this item; the local inspection
       // canvas resumes from its current snapshot without re-triggering alerts.
       if (authoringPreview.inspecting) return true;
+      try { window.RhineLiveFeed?.(item); } catch (error) { /* 场景未加载时忽略 */ }
       return deliveries.send(item);
     },
     remove(ids) {

@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    RHINE LAB — 工作室 → 莱茵直播画面 桥接
    1. 把主播名 / 标题 / 计时 / 莱茵画面设置写进 /api/rhine/state
    2. 把 B 站、模拟、手动发送的弹幕转成莱茵场景的消息格式
@@ -421,5 +421,35 @@
 
   pushState(true);
   setInterval(() => pushState(true), 15000);
+
+  // ---- 直播消息镜像：B 站 / 本地模拟 → 莱茵场景 ------------------------------
+  // 消息面板与旧画布走的是 hiss-main 通道，莱茵场景只在 /api/rhine/message 上有数据。
+  // 这里把 bilibili-live 收到的条目转换成莱茵消息格式，写进共享场景。
+  const RHINE_KINDS = { normal: 'normal', sc: 'sc', superchat: 'sc', gift: 'gift', guard: 'fleet', fleet: 'fleet' };
+  function toRhineMessage(raw) {
+    if (!raw || typeof raw !== 'object' || raw.kind === 'delete') return null;
+    const kind = RHINE_KINDS[String(raw.kind).toLowerCase()];
+    if (!kind) return null;
+    const message = {
+      kind,
+      user: raw.sender || raw.user || '',
+      text: raw.body || raw.text || '',
+    };
+    if (kind === 'sc') message.amount = Number(raw.amount || raw.price || 0);
+    if (kind === 'gift') {
+      message.name = raw.giftName || '礼物';
+      message.count = Number(raw.quantity || raw.count || 1);
+      message.value = Number(raw.coins || raw.value || 0);
+    }
+    if (kind === 'fleet') {
+      message.rank = raw.rank || 'captain';
+      message.price = Number(raw.price || 0);
+    }
+    return message;
+  }
+  window.RhineLiveFeed = function (raw) {
+    const message = toRhineMessage(raw);
+    if (message) pushMessage(message);
+  };
   window.addEventListener('pagehide', () => clearTimeout(pending));
 })();
